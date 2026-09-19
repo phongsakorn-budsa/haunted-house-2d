@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://dbmj5r1q4g6s"]
+
+[ext_resource type="Script" uid="uid://b6806dpqr8osn" path="res://scenes/player/player.gd" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://bbk5tfesrbqb" path="res://assets/player_sprite.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://im1t4qcee222" path="res://assets/player_walk_1.png" id="4_pw1"]
+[ext_resource type="Texture2D" uid="uid://drapqxsl5jebn" path="res://assets/player_walk_2.png" id="5_pw2"]
+[ext_resource type="Texture2D" uid="uid://dgtcu6esiatxw" path="res://assets/player_walk_3.png" id="6_pw3"]
+[ext_resource type="Texture2D" uid="uid://bfyge28y8r4rs" path="res://assets/player_walk_4.png" id="7_pw4"]
+[ext_resource type="Texture2D" uid="uid://4knk8l4rb2pe" path="res://assets/player_back1.png" id="8_pb1"]
+[ext_resource type="Texture2D" uid="uid://dan62tng5emri" path="res://assets/player_back2.png" id="9_pb2"]
+[ext_resource type="Texture2D" uid="uid://d58lrbsyomjb" path="res://assets/gun1911.png" id="gun0"]
+[ext_resource type="Texture2D" uid="uid://bdwy45j1vlh3" path="res://assets/gun1911_shoot1.png" id="gun1"]
+[ext_resource type="Texture2D" uid="uid://b5ubgykclgn68" path="res://assets/gun1911_shoot2.png" id="gun2"]
+[ext_resource type="Texture2D" uid="uid://djpsycgi0ka02" path="res://assets/gun1911_shoot3.png" id="gun3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_walk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_gmlin")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_pw1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pw4")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_pb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pb2")
+}],
+"loop": 1,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tpaba"]
+size = Vector2(68, 93)
+
+[sub_resource type="Gradient" id="Gradient_light"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85, 0.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("gun0")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("gun1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("gun2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("gun3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("gun0")
+}],
+"loop": 0,
+"name": &"shoot",
+"speed": 15.0
+}]
+
+[node name="player" type="CharacterBody2D" unique_id=986539765]
+script = ExtResource("1_0e48y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=566974467]
+position = Vector2(-5.875001, -9)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_walk")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1374565116]
+position = Vector2(-9, -9.5)
+shape = SubResource("RectangleShape2D_tpaba")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2028546588]
+position_smoothing_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1842287025]
+position = Vector2(-1.0000002, 1)
+scale = Vector2(5, 5)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_light")
+
+[node name="WeaponPivot" type="Node2D" parent="." unique_id=694263392]
+visible = false
+
+[node name="GunSprite" type="AnimatedSprite2D" parent="WeaponPivot" unique_id=923217892]
+position = Vector2(25, 10)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_gun")
+animation = &"idle"
+
+[node name="Muzzle" type="Marker2D" parent="WeaponPivot/GunSprite" unique_id=1260031935]
+position = Vector2(20, -5)

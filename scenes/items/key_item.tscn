@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bkl7k1lwdy8n7"]
+
+[ext_resource type="Script" uid="uid://8a5kja5nq8pg" path="res://scenes/items/key_item.gd" id="1_key"]
+[ext_resource type="Texture2D" uid="uid://b28eslhyehhyi" path="res://assets/key.png" id="2_nar8u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_key"]
+size = Vector2(40, 40)
+
+[sub_resource type="Gradient" id="Gradient_light"]
+colors = PackedColorArray(1, 0.8, 0.2, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_light"]
+gradient = SubResource("Gradient_light")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85, 0.5)
+
+[node name="KeyItem" type="Area2D" unique_id=1677462610]
+script = ExtResource("1_key")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1370580490]
+modulate = Color(1, 0.8, 0.2, 1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_nar8u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1124399744]
+shape = SubResource("RectangleShape2D_key")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=953463954]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_light")
+
+[node name="Label" type="Label" parent="." unique_id=880989831]
+visible = false
+offset_left = -10.0
+offset_top = -30.0
+offset_right = 11.0
+offset_bottom = -7.0
+text = "[E]"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://diy1kk5e1f6hw"]
+
+[ext_resource type="Script" uid="uid://dh0vwfh8n8syo" path="res://scenes/events/jumpscare_event.gd" id="1_jump"]
+[ext_resource type="Texture2D" uid="uid://d3443ntktj2mh" path="res://assets/vimple.png" id="2_vimple"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trigger"]
+size = Vector2(144, 400)
+
+[node name="JumpscareEvent" type="Area2D" unique_id=1475910451]
+script = ExtResource("1_jump")
+speed = 100.0
+direction = Vector2(0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=152524718]
+position = Vector2(28, 0)
+shape = SubResource("RectangleShape2D_trigger")
+
+[node name="FakeGhost" type="Sprite2D" parent="." unique_id=605562072]
+position = Vector2(220, -84)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_vimple")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

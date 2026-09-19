@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://c6kvq5tqqrh4q"]
+
+[ext_resource type="Script" uid="uid://dfj8qkphuq8bt" path="res://scenes/ememy/zombie.gd" id="1_zombie"]
+[ext_resource type="Texture2D" uid="uid://rjk876ktgylg" path="res://assets/zombie_walk1.png" id="2_w1"]
+[ext_resource type="Texture2D" uid="uid://brmma12aufe0m" path="res://assets/zombie_walk2.png" id="3_w2"]
+[ext_resource type="Texture2D" uid="uid://cna8lijy7vj4m" path="res://assets/zombie_walk3.png" id="4_w3"]
+[ext_resource type="Texture2D" uid="uid://bvl4o8gtkwew1" path="res://assets/zombie_walk4.png" id="5_w4"]
+[ext_resource type="Texture2D" path="res://assets/zombie_attack1.png" id="6_a1"]
+[ext_resource type="Texture2D" path="res://assets/zombie_attack2.png" id="7_a2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_walk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_w1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w4")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_zombie"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(70, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aggro"]
+radius = 300.0
+
+[node name="Zombie" type="CharacterBody2D" unique_id=474594179]
+collision_layer = 2
+script = ExtResource("1_zombie")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1551865040]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_walk")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1214592985]
+shape = SubResource("RectangleShape2D_zombie")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1279769896]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1407624690]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="AggroArea" type="Area2D" parent="." unique_id=1109802776]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" unique_id=1259159074]
+shape = SubResource("CircleShape2D_aggro")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]

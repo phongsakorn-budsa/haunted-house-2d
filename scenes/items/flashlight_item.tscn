@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://fwqncmpdtbie"]
+
+[ext_resource type="Script" uid="uid://c3d31vwam7arn" path="res://scenes/items/flashlight_item.gd" id="1_flash"]
+[ext_resource type="Texture2D" uid="uid://co5gkmnc0egl0" path="res://assets/flashlight_sprite.png" id="2_hwetv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_flash"]
+size = Vector2(100, 100)
+
+[sub_resource type="Gradient" id="Gradient_item_light"]
+colors = PackedColorArray(1, 1, 0.5, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_item_light"]
+gradient = SubResource("Gradient_item_light")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.85, 0.5)
+
+[node name="FlashlightItem" type="Area2D" unique_id=731904749]
+script = ExtResource("1_flash")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=421231951]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_hwetv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1463844019]
+shape = SubResource("RectangleShape2D_flash")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=158736002]
+position = Vector2(-0.5, 0)
+scale = Vector2(1.984375, 2)
+texture = SubResource("GradientTexture2D_item_light")
+
+[node name="Label" type="Label" parent="." unique_id=867707960]
+visible = false
+offset_left = -10.0
+offset_top = -35.0
+offset_right = 11.0
+offset_bottom = -12.0
+text = "[E]"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

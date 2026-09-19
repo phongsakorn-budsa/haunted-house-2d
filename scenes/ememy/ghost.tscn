@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dll1wbrfthiix"]
+
+[ext_resource type="Script" uid="uid://k3iggx4s2oj5" path="res://scenes/ememy/ghost.gd" id="1_ghost"]
+[ext_resource type="Texture2D" uid="uid://d1n77gfspuqav" path="res://assets/vimple_walk1.png" id="2_v1"]
+[ext_resource type="Texture2D" uid="uid://dsredbfnl67f4" path="res://assets/vimple_walk2.png" id="3_v2"]
+[ext_resource type="Texture2D" uid="uid://ca4olt4nuwkb8" path="res://assets/vimple_walk3.png" id="4_v3"]
+[ext_resource type="Texture2D" path="res://assets/vimple_attactk1.png" id="5_a1"]
+[ext_resource type="Texture2D" path="res://assets/vimple_attactk2.png" id="6_a2"]
+[ext_resource type="Texture2D" path="res://assets/vimple_attactk3.png" id="7_a3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_walk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a3")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghost"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(70, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aggro"]
+radius = 181.99
+
+[node name="Ghost" type="CharacterBody2D" unique_id=467021720]
+collision_layer = 2
+script = ExtResource("1_ghost")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=593727675]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_walk")
+animation = &"walk"
+autoplay = "walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=252316333]
+shape = SubResource("RectangleShape2D_ghost")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1762987682]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1534889609]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="AggroArea" type="Area2D" parent="." unique_id=2057829820]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroArea" unique_id=1185139917]
+shape = SubResource("CircleShape2D_aggro")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="AggroArea" to="." method="_on_aggro_area_body_exited"]
