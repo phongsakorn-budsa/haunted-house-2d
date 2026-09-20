@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HauntedHouse2D"
-run/main_scene="uid://cje0rlsjmgv22"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

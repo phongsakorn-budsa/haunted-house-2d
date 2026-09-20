@@ -98,7 +98,6 @@ mouse_filter = 2
 color = Color(0.05257874, 0.045408912, 0.0481997, 1)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=971551469]
-color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1745225765]
 tile_set = SubResource("TileSet_tpaba")
