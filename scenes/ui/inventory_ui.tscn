@@ -1,0 +1,130 @@
+[gd_scene load_steps=3 format=3 uid="uid://invui"]
+
+[ext_resource type="Script" path="res://scenes/ui/inventory_ui.gd" id="1_invui"]
+[ext_resource type="PackedScene" uid="uid://invslot" path="res://scenes/ui/inventory_slot.tscn" id="2_slot"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_invui")
+mouse_filter = 2
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -200.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.1, 0.1, 0.95)
+
+[node name="Title" type="Label" parent="Bg"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 10.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 24
+text = "INVENTORY (กด Tab เพื่อปิด)"
+horizontal_alignment = 1
+
+[node name="PlayerPreview" type="ColorRect" parent="Bg"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 60.0
+offset_right = 200.0
+offset_bottom = 180.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Label" type="Label" parent="Bg/PlayerPreview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "ตัวละคร"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipLabel" type="Label" parent="Bg"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 190.0
+offset_right = 200.0
+offset_bottom = 213.0
+text = "มือซ้าย (Off-hand)"
+horizontal_alignment = 1
+
+[node name="EquipSlot" parent="Bg" instance=ExtResource("2_slot")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 215.0
+offset_right = 160.0
+offset_bottom = 295.0
+is_equip_slot = true
+
+[node name="GridContainer" type="GridContainer" parent="Bg"]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 60.0
+offset_right = 580.0
+offset_bottom = 224.0
+columns = 4
+
+[node name="Slot5" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot6" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot7" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot8" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot9" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot10" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot11" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+[node name="Slot12" parent="Bg/GridContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+
+[node name="HotbarContainer" type="HBoxContainer" parent="."]
+mouse_filter = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -100.0
+offset_right = 166.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Slot1" parent="HotbarContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+hotbar_number = "1"
+
+[node name="Slot2" parent="HotbarContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+hotbar_number = "2"
+
+[node name="Slot3" parent="HotbarContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+hotbar_number = "3"
+
+[node name="Slot4" parent="HotbarContainer" instance=ExtResource("2_slot")]
+layout_mode = 2
+hotbar_number = "4"

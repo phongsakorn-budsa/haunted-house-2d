@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://soulcrystal"]
+
+[ext_resource type="Script" uid="uid://pms6goi3efqb" path="res://scenes/items/ingredient.gd" id="1_ing"]
+[ext_resource type="Texture2D" uid="uid://djedxdnptaofn" path="res://assets/SoulCrystal.png" id="2_img"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ing"]
+size = Vector2(40, 40)
+
+[node name="SoulCrystal" type="Area2D" unique_id=1058455488]
+script = ExtResource("1_ing")
+ingredient_name = "SoulCrystal"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1946132836]
+position = Vector2(0.99998474, 1)
+scale = Vector2(0.23822606, 0.2444134)
+texture = ExtResource("2_img")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1710173509]
+shape = SubResource("RectangleShape2D_ing")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

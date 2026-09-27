@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://f8jg77j43jkq"]
+
+[ext_resource type="Script" uid="uid://pms6goi3efqb" path="res://scenes/items/ingredient.gd" id="1_ing"]
+[ext_resource type="Texture2D" uid="uid://bwnkwbpqdy14f" path="res://assets/BloodmoonMushroom.png" id="2_img"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ing"]
+size = Vector2(40, 40)
+
+[node name="BloodmoonMushroom" type="Area2D" unique_id=1954577974]
+script = ExtResource("1_ing")
+ingredient_name = "BloodmoonMushroom"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=811427868]
+position = Vector2(0, -3)
+scale = Vector2(0.097, 0.071000025)
+texture = ExtResource("2_img")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=8669531]
+shape = SubResource("RectangleShape2D_ing")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

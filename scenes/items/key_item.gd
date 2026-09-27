@@ -12,11 +12,11 @@ func _process(delta):
 func _input(event):
 	var can_interact = (player_node != null and is_mouse_hovering)
 	if can_interact and event is InputEventKey and event.pressed and event.keycode == KEY_E and not event.echo:
-		if player_node.quest_stage >= 1:
+		if player_node.quest_stage == 2:
 			player_node.pickup_key()
 			queue_free()
 		else:
-			print("ต้องรับเควสจาก Hena ก่อนถึงจะเก็บกุญแจได้!")
+			print("ต้องรับเควสหากุญแจจาก Hena ก่อนถึงจะเก็บได้!")
 
 func _on_body_entered(body):
 	if body.name == "player":

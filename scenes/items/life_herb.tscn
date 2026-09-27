@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ye738gqvmfyg"]
+
+[ext_resource type="Script" uid="uid://pms6goi3efqb" path="res://scenes/items/ingredient.gd" id="1_ing"]
+[ext_resource type="Texture2D" uid="uid://c02cedkbiqem7" path="res://assets/Life_Herb.png" id="2_img"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ing"]
+size = Vector2(40, 40)
+
+[node name="Life_Herb" type="Area2D" unique_id=1549140069]
+script = ExtResource("1_ing")
+ingredient_name = "Life_Herb"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=369022935]
+position = Vector2(-2.0000038, -2.9999962)
+scale = Vector2(0.17404513, 0.19907409)
+texture = ExtResource("2_img")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1094789930]
+shape = SubResource("RectangleShape2D_ing")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

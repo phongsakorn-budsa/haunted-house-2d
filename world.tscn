@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bkl7k1lwdy8n7" path="res://scenes/items/key_item.tscn" id="8_key"]
 [ext_resource type="PackedScene" uid="uid://diy1kk5e1f6hw" path="res://scenes/events/jumpscare_event.tscn" id="12_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://c6kvq5tqqrh4q" path="res://scenes/ememy/zombie.tscn" id="13_2o6r5"]
-[ext_resource type="PackedScene" uid="uid://d28lqkqgk4lx1" path="res://scenes/items/gun_item.tscn" id="14_70uel"]
+[ext_resource type="PackedScene" uid="uid://mixer" path="res://scenes/interactables/ingredient_mixer.tscn" id="15_hiqwa"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/lab_door.tscn" id="16_labdoor"]
+[ext_resource type="PackedScene" uid="uid://invui" path="res://scenes/ui/inventory_ui.tscn" id="17_invui"]
+[ext_resource type="PackedScene" uid="uid://xd1jb7f3wfhk" path="res://boss_room.tscn" id="17_udxuc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ioo17"]
 texture = ExtResource("2_gbfbk")
@@ -36,6 +39,9 @@ size = Vector2(918.5, 39)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ic0uy"]
 size = Vector2(886.625, 39)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mc2jv"]
+size = Vector2(513.65625, 32.25)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbfbk"]
 size = Vector2(374, 39)
 
@@ -55,7 +61,7 @@ size = Vector2(56.5, 372)
 size = Vector2(56.5, 513)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikiii"]
-size = Vector2(62.5, 793.1875)
+size = Vector2(62.5, 816)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2o6r5"]
 size = Vector2(57, 501.34375)
@@ -90,10 +96,11 @@ size = Vector2(113, 171)
 [node name="World" type="Node2D" unique_id=2000532072]
 
 [node name="Background" type="ColorRect" parent="." unique_id=365489591]
+z_index = -100
 offset_left = -2960.0
-offset_top = -1314.0
-offset_right = 4198.0
-offset_bottom = 2510.0
+offset_top = -1736.0
+offset_right = 8357.0
+offset_bottom = 2799.0
 mouse_filter = 2
 color = Color(0.05257874, 0.045408912, 0.0481997, 1)
 
@@ -103,124 +110,147 @@ color = Color(0.05257874, 0.045408912, 0.0481997, 1)
 tile_set = SubResource("TileSet_tpaba")
 
 [node name="RedCarpet" type="Sprite2D" parent="." unique_id=1359937748]
+z_index = -5
 position = Vector2(467.24612, 108)
 rotation = 1.5707964
 scale = Vector2(0.5394883, 0.92476046)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet7" type="Sprite2D" parent="." unique_id=567016641]
+z_index = -5
 position = Vector2(1598.0001, 1250)
 scale = Vector2(0.65318847, 1.1706824)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet8" type="Sprite2D" parent="." unique_id=1606211297]
+z_index = -5
 position = Vector2(566.7848, 419.9563)
 rotation = -3.1415925
 scale = Vector2(0.5393201, 0.79103804)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet2" type="Sprite2D" parent="." unique_id=86889365]
+z_index = -5
 position = Vector2(1172.9487, 108.00003)
 rotation = 1.5707964
 scale = Vector2(0.5393201, 1.2382524)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet3" type="Sprite2D" parent="." unique_id=1461346415]
+z_index = -5
 position = Vector2(567.00006, 1135.1871)
 rotation = -3.1415925
 scale = Vector2(0.5561627, 1.5299621)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet4" type="Sprite2D" parent="." unique_id=874977446]
+z_index = -5
 position = Vector2(1159.1188, 910)
 rotation = 1.5707964
 scale = Vector2(0.5612444, 1.6000646)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet9" type="Sprite2D" parent="." unique_id=976583044]
+z_index = -5
 position = Vector2(29.706299, 909)
 rotation = -1.570796
 scale = Vector2(0.59361994, 1.411155)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet5" type="Sprite2D" parent="." unique_id=1868278290]
+z_index = -5
 position = Vector2(1594, 507.0745)
 rotation = -3.1415925
 scale = Vector2(0.66440344, 1.4275472)
 texture = ExtResource("2_gbfbk")
 
 [node name="RedCarpet6" type="Sprite2D" parent="." unique_id=1381479065]
+z_index = -5
 position = Vector2(1094.0262, 1548.1046)
 rotation = 1.5707964
 scale = Vector2(0.6862725, 1.8129327)
 texture = ExtResource("2_gbfbk")
 
 [node name="Floor" type="Sprite2D" parent="." unique_id=284752743]
+z_index = -5
 position = Vector2(-186.00012, -82.5)
 scale = Vector2(0.4553265, 0.79965156)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor2" type="Sprite2D" parent="." unique_id=1637066548]
+z_index = -5
 position = Vector2(427.92435, -162.11226)
 scale = Vector2(0.5136928, 0.5987031)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor3" type="Sprite2D" parent="." unique_id=2088297849]
+z_index = -5
 position = Vector2(1093.7435, -148.64104)
 scale = Vector2(0.5417902, 0.53837925)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor4" type="Sprite2D" parent="." unique_id=1169785948]
+z_index = -5
 position = Vector2(1734.1025, -152.53848)
 scale = Vector2(0.5647278, 0.5452432)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor5" type="Sprite2D" parent="." unique_id=2135807333]
+z_index = -5
 position = Vector2(2203, -155.07692)
 scale = Vector2(0.31891748, 0.55191356)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor6" type="Sprite2D" parent="." unique_id=179325191]
+z_index = -5
 position = Vector2(-226.04735, 490.7194)
 scale = Vector2(0.3490499, 1.0547155)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor7" type="Sprite2D" parent="." unique_id=1516429029]
+z_index = -5
 position = Vector2(219.40588, 492)
 scale = Vector2(0.40260196, 1.1124249)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor8" type="Sprite2D" parent="." unique_id=1211627734]
+z_index = -5
 position = Vector2(866.6084, 506.99997)
 scale = Vector2(0.3136028, 1.1124249)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor9" type="Sprite2D" parent="." unique_id=805173680]
+z_index = -5
 position = Vector2(1283, 509.00003)
 scale = Vector2(0.40730458, 1.0769992)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor13" type="Sprite2D" parent="." unique_id=872241015]
+z_index = -5
 position = Vector2(240.43982, 1313)
 scale = Vector2(0.36461037, 1.1599272)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor11" type="Sprite2D" parent="." unique_id=479983482]
+z_index = -5
 position = Vector2(2026.5886, 539.10004)
 scale = Vector2(0.52773327, 1.6891956)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor11" type="Sprite2D" parent="Floor11" unique_id=1963752888]
+z_index = -5
 position = Vector2(-1845.6768, 404.19305)
 scale = Vector2(1.3370155, 0.40028813)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor12" type="Sprite2D" parent="." unique_id=11158577]
+z_index = -5
 position = Vector2(-203.98265, 1333.2694)
 scale = Vector2(0.40201196, 1.1125361)
 texture = ExtResource("2_ioo17")
 
 [node name="Floor10" type="Sprite2D" parent="." unique_id=1841029657]
+z_index = -5
 position = Vector2(2033, 1320.0001)
 scale = Vector2(0.5277334, 1.02761)
 texture = ExtResource("2_ioo17")
@@ -238,7 +268,7 @@ position = Vector2(1344, 1093)
 position = Vector2(821, -251)
 
 [node name="Key3" parent="." unique_id=952842341 instance=ExtResource("8_key")]
-position = Vector2(2285, 100)
+position = Vector2(1877, 1351)
 
 [node name="Walls" type="Node2D" parent="." unique_id=898254854]
 
@@ -346,6 +376,21 @@ region_rect = Rect2(0, 0, 2000, 100)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Room7" unique_id=109831274]
 position = Vector2(-936.625, 1683)
 shape = SubResource("RectangleShape2D_ic0uy")
+
+[node name="Room13" type="StaticBody2D" parent="Walls" unique_id=1943175892]
+position = Vector2(2012, -852)
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls/Room13" unique_id=1789969381]
+texture_repeat = 2
+position = Vector2(-31.330086, 1440.0001)
+scale = Vector2(0.25833005, 0.39375034)
+texture = ExtResource("5_wall")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Room13" unique_id=370038315]
+position = Vector2(-32, 1441)
+shape = SubResource("RectangleShape2D_mc2jv")
 
 [node name="Room8" type="StaticBody2D" parent="Walls" unique_id=1509046854]
 position = Vector2(4024, -1704)
@@ -457,14 +502,14 @@ position = Vector2(2900, 600)
 
 [node name="Sprite2D" type="Sprite2D" parent="Walls/WallRight6" unique_id=1562194327]
 texture_repeat = 2
-position = Vector2(-1203, -127.62497)
-scale = Vector2(0.5900001, 0.55946434)
+position = Vector2(-1203, -146.99997)
+scale = Vector2(0.5900001, 0.58714294)
 texture = ExtResource("5_wall")
 region_enabled = true
 region_rect = Rect2(0, 0, 100, 1400)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight6" unique_id=1794330959]
-position = Vector2(-1199.25, -138.59375)
+position = Vector2(-1199.25, -150)
 shape = SubResource("RectangleShape2D_ikiii")
 
 [node name="WallRight5" type="StaticBody2D" parent="Walls" unique_id=243998708]
@@ -668,6 +713,15 @@ position = Vector2(452, 1584)
 [node name="Ghost" parent="." unique_id=1830463822 instance=ExtResource("2_ghost")]
 position = Vector2(-253, 496)
 
+[node name="Ghost3" parent="." unique_id=467021720 instance=ExtResource("2_ghost")]
+position = Vector2(-274, 1180)
+
+[node name="Ghost4" parent="." unique_id=715733347 instance=ExtResource("2_ghost")]
+position = Vector2(565, 921)
+
+[node name="Ghost2" parent="." unique_id=1935740216 instance=ExtResource("2_ghost")]
+position = Vector2(85, 624)
+
 [node name="Table" type="StaticBody2D" parent="." unique_id=810217279]
 position = Vector2(-213, -97)
 
@@ -687,39 +741,6 @@ color = Color(0.4, 0.25, 0.15, 1)
 position = Vector2(-334, -165)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1655793743]
-
-[node name="Inventory" type="HBoxContainer" parent="UI" unique_id=520114777]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -100.0
-offset_right = 40.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-
-[node name="Slot1" type="Panel" parent="UI/Inventory" unique_id=795865098]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="Icon" type="TextureRect" parent="UI/Inventory/Slot1" unique_id=1305956097]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-expand_mode = 1
 
 [node name="HealthUI" type="HBoxContainer" parent="UI" unique_id=848615794]
 offset_left = 20.0
@@ -762,7 +783,7 @@ offset_right = -20.0
 offset_bottom = 60.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 24
-text = "ภารกิจ: สำรวจปราสาท"
+text = "เธ เธฒเธฃเธเธดเธ: เธชเธณเธฃเธงเธเธเธฃเธฒเธชเธฒเธ—"
 horizontal_alignment = 2
 
 [node name="DialogueBox" type="ColorRect" parent="UI" unique_id=1096372643]
@@ -839,18 +860,51 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 24
 text = "เริ่มเกมใหม่"
 
+[node name="InventoryUI" parent="UI" unique_id=8219920 instance=ExtResource("17_invui")]
+offset_left = 35.0
+offset_top = 5.0
+offset_right = 35.0
+offset_bottom = 5.0
+
 [node name="JumpscareEvent" parent="." unique_id=1952678888 instance=ExtResource("12_k3n1d")]
 position = Vector2(325, 126)
 speed = 50.0
 
 [node name="Zombie" parent="." unique_id=618392566 instance=ExtResource("13_2o6r5")]
-position = Vector2(195, -82)
+position = Vector2(421, -207)
 
 [node name="Zombie2" parent="." unique_id=474594179 instance=ExtResource("13_2o6r5")]
 position = Vector2(1967, -108)
 
+[node name="Zombie4" parent="." unique_id=894516122 instance=ExtResource("13_2o6r5")]
+position = Vector2(1332, 579)
+
+[node name="Zombie5" parent="." unique_id=618235011 instance=ExtResource("13_2o6r5")]
+position = Vector2(1014, 437)
+
+[node name="Zombie6" parent="." unique_id=2069472868 instance=ExtResource("13_2o6r5")]
+position = Vector2(945, 1155)
+
+[node name="Zombie7" parent="." unique_id=1204536191 instance=ExtResource("13_2o6r5")]
+position = Vector2(1187, 1297)
+
+[node name="Zombie8" parent="." unique_id=1990011715 instance=ExtResource("13_2o6r5")]
+position = Vector2(1957, 1259)
+
+[node name="Zombie9" parent="." unique_id=1309866357 instance=ExtResource("13_2o6r5")]
+position = Vector2(1432, 931)
+
+[node name="Zombie10" parent="." unique_id=412374684 instance=ExtResource("13_2o6r5")]
+position = Vector2(217, 1335)
+
 [node name="Zombie3" parent="." unique_id=121570561 instance=ExtResource("13_2o6r5")]
 position = Vector2(1375, -156)
 
-[node name="GunItem" parent="." unique_id=517340740 instance=ExtResource("14_70uel")]
-position = Vector2(-322, -243)
+[node name="IngredientMixer" parent="." unique_id=717738734 instance=ExtResource("15_hiqwa")]
+position = Vector2(2014, 330)
+
+[node name="LabDoor" parent="." unique_id=896461845 instance=ExtResource("16_labdoor")]
+position = Vector2(2285, 547)
+
+[node name="boss_room" parent="." unique_id=802793856 instance=ExtResource("17_udxuc")]
+position = Vector2(5343, 703)

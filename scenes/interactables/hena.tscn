@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://co28ibwm2sdpd"]
 
 [ext_resource type="Script" uid="uid://oispqebjia74" path="res://scenes/interactables/hena.gd" id="1_hena"]
-[ext_resource type="Texture2D" uid="uid://dmowpaa5x7un0" path="res://assets/hena.png" id="2_thre0"]
+[ext_resource type="Texture2D" uid="uid://od6dd2are3kc" path="res://assets/hena_new.png" id="2_thre0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_solid"]
 size = Vector2(60, 60)
@@ -13,7 +13,8 @@ size = Vector2(120, 120)
 script = ExtResource("1_hena")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1505616532]
-scale = Vector2(0.2, 0.2)
+position = Vector2(-6.0000153, -4.9999924)
+scale = Vector2(0.511, 0.47799996)
 texture = ExtResource("2_thre0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1235795547]

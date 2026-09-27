@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://xd1jb7f3wfhk"]
+
+[ext_resource type="Texture2D" uid="uid://b5eqeeyc0x7hx" path="res://assets/bossfight.png" id="1_ve44f"]
+[ext_resource type="Texture2D" uid="uid://loal0wrydgly" path="res://assets/hena_demon.png" id="2_any6y"]
+[ext_resource type="Script" uid="uid://hfx2ots8t5h7" path="res://scenes/ememy/boss_hena.gd" id="3_boss"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_boss"]
+radius = 84.0
+height = 184.0
+
+[node name="Node2D" type="Node2D" unique_id=802793856]
+
+[node name="Bossfight" type="Sprite2D" parent="." unique_id=324521856]
+z_index = -10
+position = Vector2(417, 291.00003)
+scale = Vector2(1.7183015, 1.7778958)
+texture = ExtResource("1_ve44f")
+
+[node name="HenaDemon" type="CharacterBody2D" parent="." unique_id=210780733 groups=["enemies"]]
+position = Vector2(983.25, 480.625)
+script = ExtResource("3_boss")
+
+[node name="Sprite2D" type="Sprite2D" parent="HenaDemon" unique_id=1696914568]
+position = Vector2(51.249973, 4.125017)
+scale = Vector2(0.34600005, 0.36299998)
+texture = ExtResource("2_any6y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HenaDemon" unique_id=888168887]
+position = Vector2(50.75, -0.625)
+shape = SubResource("CapsuleShape2D_boss")
+
+[node name="AttackTimer" type="Timer" parent="HenaDemon" unique_id=645421449]
+one_shot = true

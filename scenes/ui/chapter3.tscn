@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://chapter3"]
+[gd_scene load_steps=3 format=3 uid="uid://chapter3"]
 
 [ext_resource type="Script" path="res://scenes/ui/chapter3.gd" id="1_c3"]
 [ext_resource type="Texture2D" path="res://assets/chapter3.png" id="2_c3bg"]
