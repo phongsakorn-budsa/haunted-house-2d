@@ -42,10 +42,11 @@
 * **Assets:** 2D Pixel Art 
 
 ---
-👨‍💻 ผู้พัฒนา
+  ```
+ผู้พัฒนา
 
-ชื่อ-นามสกุล: นายพงศกร บุษษะ
-Email: phongsakorn.budsa@gmail.com
-GitHub: https://github.com/phongsakorn-budsa
+ชื่อ-นามสกุล: นายพงศกร บุษษะ, นางสาวอมินตา รุ่งเรือง
+Email: phongsakorn.budsa@gmail.com, aminta.rungruang@gmail.com
+GitHub: https://github.com/phongsakorn-budsa, https://github.com/amintarungruang/
 
 *Thank you for playing!*
